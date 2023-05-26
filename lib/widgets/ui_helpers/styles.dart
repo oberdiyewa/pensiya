@@ -14,8 +14,10 @@ const TextStyle headlineStyle =
 const TextStyle bodyStyle =
     TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: colorWhite); //
 
-const TextStyle subheadingStyle =
-    TextStyle(fontSize: 10, fontWeight: FontWeight.w600); // 10-15 min
+const TextStyle subheadingStyle = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: colorDarkGrey); // 10-15 min
 
-const TextStyle captionStyle =
-    TextStyle(fontSize: 8, fontWeight: FontWeight.w400); //rating
+const TextStyle captionStyle = TextStyle(
+    fontSize: 12, fontWeight: FontWeight.w400, color: colorBlack); //rating

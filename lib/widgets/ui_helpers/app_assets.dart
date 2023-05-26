@@ -14,11 +14,17 @@ abstract class Assets {
 
   static const people = 'assets/icons/people.svg';
   static const person = 'assets/icons/person.svg';
-  static const personGrey = 'assets/icons/personGrey.svg';
+  static const personGrey = 'assets/icons/person_grey.svg';
 
   static const ru = 'assets/icons/ru.svg';
   static const tm = 'assets/icons/tm.svg';
 
   static const security = 'assets/icons/security.svg';
   static const user = 'assets/icons/user.svg';
+
+  static const ellipse = 'assets/images/ellipse.svg';
+  static const triangleVer = 'assets/images/triangle_hor.svg';
+  static const triangleHor = 'assets/images/triangle_ver.svg';
+  static const tablet = 'assets/images/tablet.png';
+  static const diagram = 'assets/images/diagram.png';
 }
