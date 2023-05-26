@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:retirement_app/screens/home_screen.dart';
 import 'package:retirement_app/screens/profile_screen/profile_screen.dart';
+import 'package:retirement_app/screens/register_screen.dart';
 import 'package:retirement_app/screens/splash_screen.dart';
 
 void main() {
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (context, child) {
           return const MaterialApp(
-            home: SplashScreen(),
+            home: RegisterScreen(),
           );
         });
   }
