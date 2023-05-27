@@ -3,12 +3,18 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:retirement_app/prefs.dart';
+import 'package:retirement_app/screens/http.dart';
+import 'package:retirement_app/screens/user.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+///  |   ACCESS_TOKEN   |  
+///       <value>
+
+
 
 const baseUrl = "https://mlsp.gov.tm";
-const headers = {
-  "Accept": "application/json",
-  "Content-Type": "application/json"
-};
+
 const data = {
   "phone": "63494718",
   "name": "Flutter",
@@ -28,6 +34,7 @@ const data = {
   "insurance_code": "string",
   "province_id": "string"
 };
+
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -64,18 +71,50 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
       final uri = Uri.parse('$baseUrl/api/auth/login');
 
+                        // dart map
       const logindata = {"phone": "63494718", "password": "password"};
+                      // dart -> json
       final reqData = jsonEncode(logindata);
 
       final response = await http.post(uri, headers: headers, body: reqData);
 
-      print(response.body);
+                      // json -> dart
+      final decoded = jsonDecode(response.body) as Map<String, dynamic>;
+
+      print(decoded);
+
+      // convert to model
+      final body = ResponseBody.fromJson(decoded['data']);
+
+      // save token to db
+      // initialize
+
+      // save
+      SharedPref.instance.setString(ACCESS_KEY, body.accessToken!);
+
     } catch (e) {
       print(e);
       rethrow;
     } finally {
       setState(() => isLoading = false);
     }
+  }
+
+  void getInfo() async {
+    // get user info: GET /api/account/info
+    final token = SharedPref.instance.getString(ACCESS_KEY);
+    headers['Authorization'] = 'Bearer $token';
+
+
+
+    print(token);
+
+    HttpService
+
+    final url = Uri.parse('$baseUrl/api/account/info');
+    final res = await http.get(url, headers: headers);
+
+    print(res.statusCode == 200);
   }
 
   @override
@@ -91,6 +130,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
           isLoading
               ? const CircularProgressIndicator()
               : TextButton(onPressed: login, child: const Text('Login')),
+          
+          const SizedBox(height: 20),
+
+          TextButton(onPressed: getInfo, child: const Text('Get info')),
         ],
       )),
     );

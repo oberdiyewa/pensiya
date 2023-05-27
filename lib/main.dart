@@ -4,12 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:retirement_app/prefs.dart';
 import 'package:retirement_app/screens/home_screen.dart';
 import 'package:retirement_app/screens/profile_screen/profile_screen.dart';
 import 'package:retirement_app/screens/register_screen.dart';
 import 'package:retirement_app/screens/splash_screen.dart';
 
-void main() {
+void main() async {
+
+  await SharedPref.initialize();
+
   runApp(const MyApp());
 }
 

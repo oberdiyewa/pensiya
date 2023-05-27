@@ -1,0 +1,12 @@
+REGISTER (phone, password)
+
+
+LOGIN (phone, password)
+access_token
+
+
+B  <----  M
+   ----> M
+     K
+   <---- oz pensiya transactions
+     
