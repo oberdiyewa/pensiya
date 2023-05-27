@@ -27,7 +27,7 @@ class _OnlineApplyState extends State<OnlineApply> {
     'Halkara gatnaşyklar bölümi',
   ];
 
-  List<String> provincesList = [
+   List<String> provincesList = [
     'Aşgabat',
     'Ahal',
     'Balkan',
